@@ -2,10 +2,16 @@ import  * as patientsService from "../services/patientsService";
 
 import { useEffect , useState } from "react";
 
+
+
+
 export default function Patients() {
 
+
+
     const[patients,setPatients] = useState([]);
-     
+
+
     useEffect(() => {
 
         patientsService.getAll()
@@ -14,6 +20,7 @@ export default function Patients() {
 
 
     } , [])
+
 
 
     return (
@@ -30,30 +37,34 @@ export default function Patients() {
             </div>
 
             <section className="section alist">
-              
-               
-
-             <div className="card">
-                
-
-                <div className="card-body">
-
-                    <div className="col-lg-8 mt-3">
-                        {/* <h5 className="card-title"> -------4444--- <span></span></h5> */}
-
-                        {
-                            patients.map( patient => (
-                                <p key={patient._id}>{patient.name}</p>
-                            ))
-                        }
-                    
+                <div className="card">
+                    <div className="card-body"> 
+                        <div className=" mt-3">
+                            <table className="table table-striped table-hover w-100">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Имена</th>
+                                        <th scope="col">ЕГН/ЛНЧ</th>
+                                        <th scope="col">ТЕЛЕФОН</th>
+                                        <th scope="col">АДРЕС</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {patients.map( (patient, index) => (
+                                        <tr key={patient._id}>
+                                            <td>{index + 1}</td>
+                                            <td>{patient.name}</td>
+                                            <td>{patient.egn}</td>
+                                            <td>{patient.phoneNumber}</td>
+                                            <td>{patient.address}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div> 
                     </div>
-                    
-
                 </div>
-
-            </div>
-
             </section>
 
         </main>

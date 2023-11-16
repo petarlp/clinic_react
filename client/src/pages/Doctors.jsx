@@ -1,4 +1,18 @@
+import * as doctorsServise from "../services/doctorsService";
+import { useEffect , useState } from "react";
+
+
 export default function Doctors() {
+
+    const[doctors,setDoctors] = useState([]);
+
+    useEffect(() => {
+        doctorsServise.getAll()
+        .then(result => setDoctors(result))
+        .catch(err => console.log(err))
+    } , [])
+
+
     return (
         <main id="main" className="main">
 
@@ -13,17 +27,34 @@ export default function Doctors() {
             </div>
 
             <section className="section alist">
-
-                <div className="row">
-
-                    <div className="col-lg-8">
-                        <div className="row">
-                            Doctores Lists
-                        </div>
+                <div className="card">
+                    <div className="card-body"> 
+                        <div className=" mt-3">
+                            <table className="table table-striped table-hover w-100">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Имена</th>
+                                        <th scope="col">УИН</th>
+                                        <th scope="col">Код спец.</th>
+                                        <th scope="col">АДРЕС</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {doctors.map( (doctor, index) => (
+                                        <tr key={doctor._id}>
+                                            <td>{index + 1}</td>
+                                            <td>{doctor.name}</td>
+                                            <td>{doctor.uin}</td>
+                                            <td>{doctor.codSpec}</td>
+                                            <td>{doctor.address}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div> 
                     </div>
-
                 </div>
-
             </section>
 
         </main>
