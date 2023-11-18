@@ -4,12 +4,13 @@
     "date": "2023-11-13T10:00:00",
     "id_patient": "1",
     "id_doctor": "1",
+    "exec" : "Многократно",
     "med1_id": "10004",
-    "med1_test": "2x1 на ден",
+    "med1_text": "2x1 на ден",
     "med2_id": "",
-    "med2_test": "",
+    "med2_text": "",
     "med3_id": "",
-    "med3_test": ""
+    "med3_text": ""
   },
 
   "2": {
@@ -17,12 +18,13 @@
     "date": "2023-11-12T10:00:00",
     "id_patient": "4",
     "id_doctor": "1",
+    "exec" : "Еднократно",
     "med1_id": "10194",
-    "med1_test": "3х1 на ден",
+    "med1_text": "3х1 на ден",
     "med2_id": "",
-    "med2_test": "",
+    "med2_text": "",
     "med3_id": "",
-    "med3_test": ""
+    "med3_text": ""
   }
 
 }

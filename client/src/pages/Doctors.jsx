@@ -26,7 +26,7 @@ export default function Doctors() {
               </nav>
             </div>
 
-            <section className="section alist">
+            <section className="section doctors">
                 <div className="card">
                     <div className="card-body"> 
                         <div className=" mt-3">
