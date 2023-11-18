@@ -1,4 +1,16 @@
+import * as alistsService from "../services/alistsService";
+import { dateFormatBg } from "../services/dateFormatBg";
+import { useEffect , useState } from "react";
+
 export default function AmbList() {
+    const[alists,setAlists] = useState([]);
+
+    useEffect(() => {
+        alistsService.getAll()
+        .then(result => setAlists(result))
+        .catch(err => console.log(err))
+    } , [])
+
     return (
         <main id="main" className="main">
 
@@ -12,18 +24,45 @@ export default function AmbList() {
               </nav>
             </div>
 
-            <section className="section alist">
-
-                <div className="row">
-
-                    <div className="col-lg-8">
-                        <div className="row">
-                            Ambulatore Lists
-                        </div>
+            <section className="section doctors">
+                <div className="card">
+                    <div className="card-body"> 
+                        <div className=" mt-3">
+                            <table className="table table-striped table-hover w-100">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Дата</th>
+                                        <th scope="col">Пациент</th>
+                                        <th scope="col">Доктор</th>
+                                        <th scope="col">МКБ</th>
+                                        <th scope="col">Основна диагноза</th>
+                                        <th scope="col">Анамнеза</th>
+                                        <th scope="col">Обективно състояние</th>
+                                        <th scope="col">Изследвания</th>
+                                        <th scope="col">Терапия</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {alists.map( (alist, index) => (
+                                        <tr key={alist._id}>
+                                            <td>{index + 1}</td>
+                                            <td>{dateFormatBg(alist.date)}</td>
+                                            <td>{alist.id_patient}</td>
+                                            <td>{alist.id_doctor}</td>
+                                            <td>{alist.id_mkb}</td>
+                                            <td>{alist.main_diagnose}</td>
+                                            <td>{alist.med_history}</td>
+                                            <td>{alist.obj_state}</td>
+                                            <td>{alist.med_research}</td>
+                                            <td>{alist.teraphy}</td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div> 
                     </div>
-
                 </div>
-
             </section>
 
         </main>
