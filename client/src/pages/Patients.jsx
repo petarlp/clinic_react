@@ -2,6 +2,8 @@ import  * as patientsService from "../services/patientsService";
 
 import { useEffect , useState } from "react";
 
+import  CreatePatientModal from "../components/CreatePatientModal"
+
 
 
 
@@ -10,6 +12,10 @@ export default function Patients() {
 
 
     const[patients,setPatients] = useState([]);
+
+    const updatePatientData = (newPatient) => {
+        setPatients([...patients, newPatient]);
+    }
 
 
     useEffect(() => {
@@ -27,7 +33,7 @@ export default function Patients() {
         <main id="main" className="main">
 
             <div className="pagetitle">
-              <h1>Пациенти</h1> 
+              <h1>Списък на пациентите</h1> 
               <nav>
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item"><a href="index.html">Начало</a></li>
@@ -67,6 +73,10 @@ export default function Patients() {
                 </div>
             </section>
 
+            <CreatePatientModal updateParentData={updatePatientData}/>
+
         </main>
+
+
     )
 }

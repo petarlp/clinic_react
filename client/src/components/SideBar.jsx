@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom';
-import React , {useState} from 'react';
+import {useState} from 'react';
 
 export default function SideBar() {
     
@@ -39,21 +39,21 @@ export default function SideBar() {
 
               <li className="nav-item">
                 <NavLink to="/doctors" className="nav-link collapsed" onClick={handleCloseCollapse }>
-                  <i className="bi bi-question-circle"></i>
+                  <i className="bi bi-plus-circle"></i>
                   <span>Лекари</span>
                 </NavLink>
               </li>
 
               <li className="nav-item">
                 <NavLink to="/alists" className="nav-link collapsed" onClick={handleCloseCollapse }>
-                  <i className="bi bi-envelope"></i>
+                  <i className="bi bi-clipboard2-pulse"></i>
                   <span>Амбулаторен лист</span>
                 </NavLink>
               </li>
 
               <li className="nav-item">
                 <NavLink to="/recipes" className="nav-link collapsed" onClick={handleCloseCollapse }> 
-                  <i className="bi bi-card-list"></i>
+                  <i className="bi bi-capsule"></i>
                   <span>Рецепта</span>
                 </NavLink>
               </li>
@@ -62,7 +62,7 @@ export default function SideBar() {
 
               <li className="nav-item">
                 <NavLink to="/shedule" className="nav-link collapsed" onClick={handleCloseCollapse }> 
-                  <i className="bi bi-card-list"></i>
+                  <i className="bi bi-clock"></i>
                   <span>Запази час</span>
                 </NavLink>
               </li>
@@ -95,7 +95,7 @@ export default function SideBar() {
                   href="#"
                   onClick={handleToggleCollapse}
                 >
-                  <i className="bi bi-layout-text-window-reverse"></i>
+                  <i className="bi bi-gear"></i>
                   <span>Настройки</span>
                   <i className={`bi bi-chevron-down ms-auto ${isCollapsed ? 'collapsed' : ''}`}></i>
                 </a>
