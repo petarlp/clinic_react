@@ -2,29 +2,21 @@
   "1": {
     "_id": "1",
     "date": "2023-11-13T10:00:00",
-    "id_patient": "1",
-    "id_doctor": "1",
+    "patient_name": "Иван Иванов Иванов",
+    "doctor_name": "доц. д-р Павел Христов",
     "exec" : "Многократно",
-    "med1_id": "10004",
-    "med1_text": "2x1 на ден",
-    "med2_id": "",
-    "med2_text": "",
-    "med3_id": "",
-    "med3_text": ""
+    "med_name": "FENISTIL GEL, Gel, 0,1 % - 30 g, null PACK: 1",
+    "med_text": "2x1 на ден"
   },
 
   "2": {
     "_id": "2",
     "date": "2023-11-12T10:00:00",
-    "id_patient": "4",
-    "id_doctor": "1",
+    "patient_name": "Силвия Петрова Дилева",
+    "doctor_name": "д-р Лилия Коцева",
     "exec" : "Еднократно",
-    "med1_id": "10194",
-    "med1_text": "3х1 на ден",
-    "med2_id": "",
-    "med2_text": "",
-    "med3_id": "",
-    "med3_text": ""
+    "med_name": "FLUIMUCIL, Granules for oral solution, 100 mg, null PACK: 20",
+    "med_text": "3х1 на ден"
   }
 
 }

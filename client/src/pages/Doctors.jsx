@@ -1,5 +1,6 @@
 import * as doctorsServise from "../services/doctorsService";
 import { useEffect , useState } from "react";
+import  CreateDoctorsModal from "../components/CreateDoctorsModal";
 
 
 export default function Doctors() {
@@ -17,11 +18,11 @@ export default function Doctors() {
         <main id="main" className="main">
 
             <div className="pagetitle">
-              <h1>Doctors List</h1>
+              <h1>Списък на лекарите</h1>
               <nav>
                 <ol className="breadcrumb">
                   <li className="breadcrumb-item"><a href="index.html">Home</a></li>
-                  <li className="breadcrumb-item active">Doctores List</li>
+                  <li className="breadcrumb-item active">Лекари</li>
                 </ol>
               </nav>
             </div>
@@ -56,6 +57,8 @@ export default function Doctors() {
                     </div>
                 </div>
             </section>
+
+            <CreateDoctorsModal />
 
         </main>
     )

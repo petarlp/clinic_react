@@ -36,11 +36,7 @@ export default function Recipe() {
                                         <th scope="col">Пациент</th>
                                         <th scope="col">Доктор</th>
                                         <th scope="col">Отпускане</th>
-                                        <th scope="col">Лекарство 1</th>
-                                        <th scope="col">Прием</th>
-                                        <th scope="col">Лекарство 2</th>
-                                        <th scope="col">Прием</th>
-                                        <th scope="col">Лекарство 3</th>
+                                        <th scope="col">Лекарство</th>
                                         <th scope="col">Прием</th>
                                     </tr>
                                 </thead>
@@ -49,16 +45,11 @@ export default function Recipe() {
                                         <tr key={alist._id}>
                                             <td>{index + 1}</td>
                                             <td>{dateFormatBg(alist.date)}</td>
-                                            <td>{alist.id_patient}</td>
-                                            <td>{alist.id_doctor}</td>
-                                            <td>{alist.id_mkb}</td>
+                                            <td>{alist.patient_name}</td>
+                                            <td>{alist.doctor_name}</td>
                                             <td>{alist.exec}</td>
-                                            <td>{alist.med1_id}</td>
-                                            <td>{alist.med1_text}</td>
-                                            <td>{alist.med2_id}</td>
-                                            <td>{alist.med2_text}</td>
-                                            <td>{alist.med3_id}</td>
-                                            <td>{alist.med3_text}</td>
+                                            <td>{alist.med_name}</td>
+                                            <td>{alist.med_text}</td>
                                         </tr>
                                     ))}
                                 </tbody>
