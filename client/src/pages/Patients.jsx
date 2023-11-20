@@ -2,7 +2,9 @@ import  * as patientsService from "../services/patientsService";
 
 import { useEffect , useState } from "react";
 
-import  CreatePatientModal from "../components/CreatePatientModal"
+import  CreateEditPatientModal from "../components/CreateEditPatientModal"
+
+import Button from 'react-bootstrap/Button';
 
 
 
@@ -12,6 +14,8 @@ export default function Patients() {
 
 
     const[patients,setPatients] = useState([]);
+
+    const[editUserId, setEditUserId] = useState(-1);
 
     const updatePatientData = (newPatient) => {
         setPatients([...patients, newPatient]);
@@ -27,7 +31,7 @@ export default function Patients() {
 
     } , [])
 
-
+    
 
     return (
         <main id="main" className="main">
@@ -54,6 +58,7 @@ export default function Patients() {
                                         <th scope="col">ЕГН/ЛНЧ</th>
                                         <th scope="col">ТЕЛЕФОН</th>
                                         <th scope="col">АДРЕС</th>
+                                        <th scope="col">Действия</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -64,6 +69,9 @@ export default function Patients() {
                                             <td>{patient.egn}</td>
                                             <td>{patient.phoneNumber}</td>
                                             <td>{patient.address}</td>
+                                            <td>
+                                                <i className="bi bi-pencil-square edit_but" onClick={() => setEditUserId(patient._id)}></i>
+                                                <i className="bi bi-x-square del_but"></i></td>
                                         </tr>
                                     ))}
                                 </tbody>
@@ -73,7 +81,11 @@ export default function Patients() {
                 </div>
             </section>
 
-            <CreatePatientModal updateParentData={updatePatientData}/>
+            <CreateEditPatientModal updateParentData={updatePatientData} selUserId={editUserId} />
+
+            <Button variant="primary" onClick={() => setEditUserId(0)}>
+                Нов пациент   
+            </Button>
 
         </main>
 

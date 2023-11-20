@@ -1,14 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
 // eslint-disable-next-line react/prop-types
-function CreatePatientModal({updateParentData}) {
-  const [show, setShow] = useState(false);
+function CreateEditPatientModal({updateParentData, selUserId, showModal}) {
+
+  const [show, setShow] = useState(showModal);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const handleShow = () => setShow(true);
 
   const [formData, setFormData] = useState({
     _id: '',
@@ -47,15 +48,19 @@ function CreatePatientModal({updateParentData}) {
     }
   };
 
+  useEffect(() => {
+    if(selUserId >= 0) // if selUserId ==0 create new patient
+    {
+      setShow(true);
+    }
+  },[selUserId])
+
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Нов пациент
-      </Button>
-
+      
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Въвеждане на нов пациент</Modal.Title>
+          <Modal.Title>{selUserId==0?'Въвеждане на нов пациент':'Редакция на пациент'}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -113,4 +118,4 @@ function CreatePatientModal({updateParentData}) {
   );
 }
 
-export default  CreatePatientModal;
+export default  CreateEditPatientModal;
