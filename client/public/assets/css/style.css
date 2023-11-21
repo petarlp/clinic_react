@@ -1244,7 +1244,7 @@ h6 {
 }
 
 .edit_but:hover {
-  color:blue;
+  color:green;
 }
 
 .del_but {
@@ -1253,5 +1253,5 @@ h6 {
 }
 
 .del_but:hover {
-  color:blue;
+  color:red;
 }
