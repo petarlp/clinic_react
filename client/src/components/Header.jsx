@@ -1,5 +1,15 @@
-/* eslint-disable react/prop-types */
+import { Link } from 'react-router-dom';
+import { useContext } from "react";
+import AuthContext from "../contexts/authContext";
+
 export default function Header(props) {
+
+  const { isAuthenticated } = useContext(AuthContext);
+
+    if (!isAuthenticated) {
+      return null; // If the user is not authenticated, return null (nothing)
+    }
+
     return (
         <header id="header" className="header fixed-top d-flex align-items-center">
 
@@ -30,7 +40,7 @@ export default function Header(props) {
 
                   <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
                     <li className="dropdown-header">
-                      За днешния ден имате записани 4 прегледа
+                      За днешния ден имате записани 4 прегледа 
                       <a href="#"><span className="p-2 badge rounded-pill bg-primary ms-2">Виж всички</span></a>
                     </li>
                     {/* <li>
@@ -117,38 +127,19 @@ export default function Header(props) {
                     <li>
                       <a className="dropdown-item d-flex align-items-center" href="users-profile.html">
                         <i className="bi bi-person"></i>
-                        <span>My Profile</span>
+                        <span>Моя профил</span>
                       </a>
                     </li>
                     <li>
                       <hr className="dropdown-divider" />
                     </li>
 
-                    <li>
-                      <a className="dropdown-item d-flex align-items-center" href="users-profile.html">
-                        <i className="bi bi-gear"></i>
-                        <span>Account Settings</span>
-                      </a>
-                    </li>
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
 
                     <li>
-                      <a className="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                        <i className="bi bi-question-circle"></i>
-                        <span>Need Help?</span>
-                      </a>
-                    </li>
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
-
-                    <li>
-                      <a className="dropdown-item d-flex align-items-center" href="#">
+                      <Link to="/logout" className="dropdown-item d-flex align-items-center">
                         <i className="bi bi-box-arrow-right"></i>
-                        <span>Sign Out</span>
-                      </a>
+                        <span>Изход</span>
+                      </Link>
                     </li>
 
                   </ul>

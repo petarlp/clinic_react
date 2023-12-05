@@ -1,5 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import {useState} from 'react';
+import { useContext } from "react";
+import AuthContext from "../contexts/authContext";
 
 export default function SideBar() {
     
@@ -13,6 +15,12 @@ export default function SideBar() {
     const handleCloseCollapse = () => {
       setIsCollapsed(true);
     };
+
+    const { isAuthenticated } = useContext(AuthContext);
+
+    if (!isAuthenticated) {
+      return null; // If the user is not authenticated, return null (nothing)
+    }
 
     return (
         <aside id="sidebar" className="sidebar">
