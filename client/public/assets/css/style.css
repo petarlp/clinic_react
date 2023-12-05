@@ -1237,3 +1237,21 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+
+.edit_but {
+  margin-left:10px;
+  cursor: pointer;
+}
+
+.edit_but:hover {
+  color:green;
+}
+
+.del_but {
+  margin-left:20px;
+  cursor:pointer;
+}
+
+.del_but:hover {
+  color:red;
+}

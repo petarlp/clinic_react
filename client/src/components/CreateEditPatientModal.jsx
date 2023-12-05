@@ -1,61 +1,27 @@
-import { useState } from 'react';
+
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
+
+
 // eslint-disable-next-line react/prop-types
-function CreatePatientModal({updateParentData}) {
-  const [show, setShow] = useState(false);
+function CreateEditPatientModal({showModal,showm,editIndex,formData,setFormData,handleAddOrEdit}) {
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  const [formData, setFormData] = useState({
-    _id: '',
-    name: '',
-    egn: '',
-    phoneNumber: '',
-    address: '',
-  })
+  const handleClose = () => {
+    showm(false)
+  };
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: value });
   };
 
-  const handleSubmit = async () => {
-    try {
-      const response = await fetch('http://localhost:3030/jsonstore/patients', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        const fdata = formData;
-        fdata._id = Object.values(result)[0];
-        updateParentData(fdata);
-        handleClose(); 
-      } else {
-        console.error('Грешка при запис:', response.statusText);
-      }
-    } catch (error) {
-      console.error('Грешка при изпращането на данните:', error);
-    }
-  };
-
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
-        Нов пациент
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
+      <Modal  show={showModal} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Въвеждане на нов пациент</Modal.Title>
+          <Modal.Title>{editIndex !== null ? 'Редакция на данни' : 'Добави запис'}</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -101,11 +67,11 @@ function CreatePatientModal({updateParentData}) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Отказ
+          <Button variant="secondary" onClick={() => showm(false)}>
+            Отказ 
           </Button>
-          <Button variant="primary" onClick={handleSubmit}>
-            Запази данни
+          <Button variant="primary" onClick={() => handleAddOrEdit()} >
+              {editIndex !== null ? 'Редактирай' : 'Добави'}
           </Button>
         </Modal.Footer>
       </Modal>
@@ -113,4 +79,4 @@ function CreatePatientModal({updateParentData}) {
   );
 }
 
-export default  CreatePatientModal;
+export default  CreateEditPatientModal;
