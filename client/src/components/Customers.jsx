@@ -6,7 +6,7 @@ export default function Customers(){
             <div className="card info-card customers-card">
 
                 <div className="card-body">
-                    <h5 className="card-title">Брой пациенти <span>| През текущата година</span></h5>
+                    <h5 className="card-title">Брой пациенти <span></span></h5>
 
                     <div className="d-flex align-items-center">
                     <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -14,7 +14,7 @@ export default function Customers(){
                     </div>
                     <div className="ps-3">
                         <h6>1244</h6>
-                        <span className="pt-1 text-danger small fw-bold">12%</span> <span className="pt-2 text-muted small ps-1">увеличение спрямо предходната година</span>
+                        {/* <span className="pt-1 text-danger small fw-bold">12%</span> <span className="pt-2 text-muted small ps-1">увеличение спрямо предходната година</span> */}
 
                     </div>
                     </div>

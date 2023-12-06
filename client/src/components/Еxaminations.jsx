@@ -17,7 +17,7 @@ export default function Еxaminations() {
           </div> */}
 
           <div className="card-body">
-            <h5 className="card-title">Записани прегледи <span>| Днес</span></h5>
+            <h5 className="card-title">Записани прегледи <span></span></h5>
 
             <div className="d-flex align-items-center">
               <div className="card-icon rounded-circle d-flex align-items-center justify-content-center">
@@ -26,7 +26,7 @@ export default function Еxaminations() {
               </div>
               <div className="ps-3">
                 <h6>25</h6>
-                <span className="pt-1 text-success small fw-bold">12%</span> <span className="pt-2 text-muted small ps-1">повече от вчера</span>
+                {/* <span className="pt-1 text-success small fw-bold">12%</span> <span className="pt-2 text-muted small ps-1">повече от вчера</span> */}
 
               </div>
             </div>

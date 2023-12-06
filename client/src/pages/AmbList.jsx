@@ -50,7 +50,7 @@ export default function AmbList() {
                                             <td>{dateFormatBg(alist.date)}</td>
                                             <td>{alist.patient.name}</td>
                                             <td>{alist.doctor.name}</td>
-                                            <td>{alist.mkb_code_name}</td>
+                                            <td>{alist.mkb.code}/{alist.mkb.text}</td>
                                             <td>{alist.main_diagnose}</td>
                                             <td>{alist.med_history}</td>
                                             <td>{alist.obj_state}</td>
