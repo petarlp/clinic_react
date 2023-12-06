@@ -45,8 +45,8 @@ export default function Recipe() {
                                         <tr key={alist._id}>
                                             <td>{index + 1}</td>
                                             <td>{dateFormatBg(alist.date)}</td>
-                                            <td>{alist.patient_name}</td>
-                                            <td>{alist.doctor_name}</td>
+                                            <td>{alist.patient.name}</td>
+                                            <td>{alist.doctor.name}</td>
                                             <td>{alist.exec}</td>
                                             <td>{alist.med_name}</td>
                                             <td>{alist.med_text}</td>

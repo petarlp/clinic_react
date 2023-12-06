@@ -1,7 +1,12 @@
-const baseUrl = 'http://localhost:3030/jsonstore'
+const baseUrl = 'http://localhost:3030/data'
 
 export const getAll = async () => {
-    const response = await fetch(`${baseUrl}/alists`);
+
+    const query = new URLSearchParams({
+        load: `patient=_patientId:patients,doctor=_doctorId:doctors`,
+    });
+
+    const response = await fetch(`${baseUrl}/alists?${query}`);
     const result = await response.json();
     const data = Object.values(result);
 

@@ -48,8 +48,8 @@ export default function AmbList() {
                                         <tr key={alist._id}>
                                             <td>{index + 1}</td>
                                             <td>{dateFormatBg(alist.date)}</td>
-                                            <td>{alist.patient_name}</td>
-                                            <td>{alist.doctor_name}</td>
+                                            <td>{alist.patient.name}</td>
+                                            <td>{alist.doctor.name}</td>
                                             <td>{alist.mkb_code_name}</td>
                                             <td>{alist.main_diagnose}</td>
                                             <td>{alist.med_history}</td>

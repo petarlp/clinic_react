@@ -6,6 +6,9 @@ export default function Header(props) {
 
   const { isAuthenticated } = useContext(AuthContext);
 
+  const username = localStorage.getItem('username');
+  const user_img = localStorage.getItem('user_img');
+
     if (!isAuthenticated) {
       return null; // If the user is not authenticated, return null (nothing)
     }
@@ -111,24 +114,14 @@ export default function Header(props) {
                 <li className="nav-item dropdown pe-3">
 
                   <a className="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                    <img src="assets/img/profile-img.jpg" alt="Profile" className="rounded-circle" />
-                    <span className="d-none d-md-block dropdown-toggle ps-2">др.Иван Пеев</span>
+                    <img src={`assets/img/${user_img}`} alt="Profile" className="rounded-circle" />
+                    <span className="d-none d-md-block dropdown-toggle ps-2">{username}</span>
                   </a>
 
                   <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                     <li className="dropdown-header">
-                      <h6>др. Иван Пеев</h6>
+                      <h6>{username}</h6>
                       <span>УНГ</span>
-                    </li>
-                    <li>
-                      <hr className="dropdown-divider" />
-                    </li>
-
-                    <li>
-                      <a className="dropdown-item d-flex align-items-center" href="users-profile.html">
-                        <i className="bi bi-person"></i>
-                        <span>Моя профил</span>
-                      </a>
                     </li>
                     <li>
                       <hr className="dropdown-divider" />

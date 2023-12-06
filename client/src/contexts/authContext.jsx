@@ -20,7 +20,14 @@ export function AuthProvider({
 
         setAuth(result);
 
+        console.log('set login information');
+        console.log(result);
+
         localStorage.setItem('accessToken', result.accessToken);
+        localStorage.setItem('username', result.username);
+        localStorage.setItem('user_img', result.img);
+        localStorage.setItem('user_type', result.type);
+        localStorage.setItem('user_id', result._id);
 
         navigate(Path.Home);
     };
@@ -31,6 +38,10 @@ export function AuthProvider({
         setAuth(result);
 
         localStorage.setItem('accessToken', result.accessToken);
+        localStorage.setItem('username', result.username);
+        localStorage.setItem('user_img', result.img);
+        localStorage.setItem('user_type', result.type);
+        localStorage.setItem('user_id', result._id);
 
         navigate(Path.Home);
     };
@@ -38,6 +49,10 @@ export function AuthProvider({
     const logoutHandler = () => {
         setAuth({});
         localStorage.removeItem('accessToken');
+        localStorage.removeItem('username');
+        localStorage.removeItem('user_img');
+        localStorage.removeItem('user_type');
+        localStorage.removeItem('user_id');
     };
 
     const values = {

@@ -1322,24 +1322,330 @@
     	users: {
     		"35c62d76-8152-4626-8712-eeb96381bea8": {
     			email: "peter@abv.bg",
-    			username: "Peter",
+    			username: "др. Петър Маринов",
+                img: "pmarinov.jpg",
+                type: "user",
     			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
     		},
     		"847ec027-f659-4086-8032-5173e2f9c93a": {
-    			email: "george@abv.bg",
-    			username: "George",
+    			email: "stefan@abv.bg",
+    			username: "д-р Стефан Кръстев",
+                img: "skrastev.jpg",
+                type: "user",
+    			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
+    		},
+    		"847ec027-f659-4086-8032-5173e2f9c93b": {
+    			email: "hristo@abv.bg",
+    			username: "	д-р Христо Тодоров",
+                img: "htodorov.jpg",
+                type: "user",
+    			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
+    		},
+            "847ec027-f659-4086-8032-5173e2f9c93c": {
+    			email: "lilia@abv.bg",
+    			username: "д-р Лилия Коцева",
+                img: "lkoceva.jpg",
+                type: "user",
     			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
     		},
     		"60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
     			email: "admin@abv.bg",
     			username: "Admin",
-    			hashedPassword: "fac7060c3e17e6f151f247eacb2cd5ae80b8c36aedb8764e18a41bbdc16aa302"
+                img: "admin.png",
+                type: "admin",
+    			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
     		}
     	},
     	sessions: {
     	}
     };
-    var seedData = {};
+    var seedData = {
+        patients: 
+        {
+            "1": {
+              "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+              "_id": "1",
+              "name": "Иван Иванов Иванов",
+              "egn": "8301173988",
+              "phoneNumber": "0899999999",
+              "address": "гр. Варна"
+            },
+          
+            "2": {
+              "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+              "_id": "2",
+              "name": "Ангел Илиев Попов",
+              "egn": "6803144167",
+              "phoneNumber": "0888888888",
+              "address": "гр. Варна"
+            },
+          
+            "3": {
+              "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+              "_id": "3",
+              "name": "Милен Иванов Колев",
+              "egn": "7901070986",
+              "phoneNumber": "0877777777",
+              "address": "гр. Варна"
+            },
+            
+            "4": {
+              "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+              "_id": "4",
+              "name": "Силвия Петрова Дилева",
+              "egn": "7607279210",
+              "phoneNumber": "0866666666",
+              "address": "гр. Варна"
+            },
+          
+            "5": {
+              "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+              "_id": "5",
+              "name": "Калоян Маринов Иванов",
+              "egn": "6304304385",
+              "phoneNumber": "0895555555",
+              "address": "гр. Варна"
+            }
+           
+        },
+        doctors: {
+            "1": {
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "_id": "1",
+              "name": "др. Петър Маринов",
+              "uin": "1234567890",
+              "codSpec": "20",
+              "address": "гр. Варна"
+            },
+          
+            "2": {
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "_id": "2",
+              "name": "д-р Стефан Кръстев",
+              "uin": "1234123456",
+              "codSpec": "20",
+              "address": "гр. Варна"
+            },
+          
+            "3": {
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "_id": "3",
+              "name": "д-р Христо Тодоров",
+              "uin": "9876543210",
+              "codSpec": "20",
+              "address": "гр. Варна"
+            },
+          
+            "4": {
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "_id": "4",
+              "name": "д-р Лилия Коцева",
+              "uin": "7776665551",
+              "codSpec": "20",
+              "address": "гр. Варна"
+            }
+            
+           
+        },
+        alists: {
+            "1": {
+              "_id": "1",
+              "date": "2023-11-13T10:00:00",
+              "_patientId": "1",
+              "_doctorId": "1",
+              "mkb_code_name": "M24.4 / Рецидивиращи луксация и сублуксация на става",
+              "main_diagnose": "Spondylarthrosis lumbalis. Лумбален синдром L5/S1 вдясно. Myositis m. tensor fasciae latae dextra.",
+              "med_history": "Пациент с болки в колената",
+              "obj_state" :"Нормално, болките се появяват след физическо натоварване" ,
+              "med_research" : "Назначена рентгенова снимка", 
+              "teraphy" : "Назначена медикаментозна терапия."
+            },
+          
+            "2": {
+              "_id": "2",
+              "date": "2023-11-12T10:00:00",
+              "_patientId": "1",
+              "_doctorId": "2",
+              "mkb_code_name": "M25.52 / Ставна болка, Мишница раменна кост лакътна става",
+              "main_diagnose": "Gonarthrosis billateralis. Insertionitis m. vastus medialis genu sin. Spondylarthrosis. Лумбален синдром L4.",
+              "med_history": "Gonarthrosis billateralis. Insertionitis m. vastus medialis genu sin. Spondylarthrosis. Лумбален синдром L4.",
+              "obj_state" :"Пациентка с оплаквания от болка в коленете започнала от 2 години. Първоначално болката била в дясно коляно, а след 7 месеца се появила болка и в ляво коляно. Провела е курсове физиотерапия с временен ефект." ,
+              "med_research" : "Клинични данни за гонартроза вдясно и по-слабо изразена вляво. Инсерционит на m. vastus medialis sin. перипателарно. Лумбален синдром L4. С препоръка за провеждане на курс физиотерапия. ", 
+              "teraphy" : ""
+            },
+          
+            "3": {
+              "_id": "3",
+              "date": "2023-11-12T10:00:00",
+              "_patientId": "2",
+              "_doctorId": "3",
+              "mkb_code_name": "M22.9 / Увреждане на пателата, неуточнено",
+              "main_diagnose": "Лумбален синдром Л5",
+              "med_history": "",
+              "obj_state" :"Пациент с оплаквния нарушена сетивност по предна горна повърхност на лява подбедрица започнала преди седмица. Съобщава и за затруднения в походката. Данни за стара дискова херния в лумбален отдел открита преди повече от 10 години." ,
+              "med_research" : "Клинични данни за хипестезия на n. cutaneus lateralis (n. suralis). Соматични дисфункции на Тх12/Л1, Тх6/7/8/9, С2/С3 вляво. ", 
+              "teraphy" : "Назначена медикаментозна терапия."
+            }
+          
+          },
+          recipes: {
+            "1": {
+              "_id": "1",
+              "date": "2023-11-13T10:00:00",
+              "_patientId": "1",
+              "_doctorId": "3",
+              "exec" : "Многократно",
+              "med_name": "FENISTIL GEL, Gel, 0,1 % - 30 g, null PACK: 1",
+              "med_text": "2x1 на ден"
+            },
+          
+            "2": {
+              "_id": "2",
+              "date": "2023-11-12T10:00:00",
+              "_patientId": "2",
+              "_doctorId": "2",
+              "exec" : "Еднократно",
+              "med_name": "FLUIMUCIL, Granules for oral solution, 100 mg, null PACK: 20",
+              "med_text": "3х1 на ден"
+            }
+          
+          },
+          mkbs: {
+            "1": {
+              "_id": "1",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "code": "M24.1",
+              "text": "Други увреждания на ставния хрущял"
+            },
+          
+            "2": {
+              "_id": "2",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "code": "M24.4",
+              "text": "Рецидивиращи луксация и сублуксация на става"
+            },
+          
+            "3": {
+              "_id": "3",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "code": "M25.20",
+              "text": "Ставен хиперлакситет, Множествена локализация"
+            },
+          
+            "4": {
+              "_id": "4",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "code": "M25.52",
+              "text": "Ставна болка, Мишница раменна кост лакътна става"
+            },
+          
+            "5": {
+              "_id": "5",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "code": "M23.2",
+              "text": "Увреждане на мениска в резултат на стара травма или разкъсване"
+            },
+          
+            "6": {
+              "_id": "6",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "code": "M22.9",
+              "text": "Увреждане на пателата, неуточнено"
+            },
+          
+            "7": {
+              "_id": "7",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "code": "M13.0",
+              "text": "Полиартрит, неуточнен"
+            },
+          
+            "8": {
+              "_id": "8",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "code": "M12.52",
+              "text": "Травматична артропатия, Мишница раменна кост лакътна става"
+            },
+          
+            "9": {
+              "_id": "9",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "code": "M12.3",
+              "text": "Палиндромен ревматизъм"
+            },
+          
+            "10": {
+              "_id": "10",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "code": "M12.4",
+              "text": "Интермитентна хидрартроза"
+            }
+           
+          },
+          medicaments: {
+
+            "10004": {
+              "_id": "10004",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "name": "FENISTIL GEL, Gel, 0,1 % - 30 g, null PACK: 1"
+            },
+          
+            "10005": {
+              "_id": "10005",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "name": "FENISTIL 24, Capsules, 4 mg, null PACK: 10"
+            },
+          
+            "10030": {
+              "_id": "10030",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "name": "VOLTAREN EMULGEL, Gel, 1,16 % - 100 g, null PACK: 1"
+            },
+          
+            "10025": {
+              "_id": "10025",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "name": "Rivanol VT, Cutaneous solution, 0.1 % - 100 ml, null PACK: 1 bottle"
+            },
+          
+            "10080": {
+              "_id": "10080",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "name": "Rivanol VT, Cutaneous solution, 0.1 % - 100 ml, null PACK: 1 bottle"
+            },
+          
+            "10104": {
+              "_id": "10104",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "name": "FLUIMUCIL 100, Granules for oral solution, 100 mg, null PACK: 20"
+            },
+          
+            "10194": {
+              "_id": "10194",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "name": "FLUIMUCIL, Granules for oral solution, 100 mg, null PACK: 20"
+            },
+          
+            "10312": {
+              "_id": "10312",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "name": "CORNEREGEL EYE GEL, Non nomenclature value, 5 % - 10 g, null PACK: 1"
+            },
+          
+            "11110": {
+              "_id": "11110",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "name": "Fluditec, Syrup, 20 mg/ml - 125 ml, null PACK: 1 (Bottle, colourless glass)"
+            },
+          
+            "11051": {
+              "_id": "11051",
+              "_ownerId": "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
+              "name": "Myrtol, Gastro-resistant capsule, soft, 120, mg PACK: 20"
+            }
+           
+          }
+    };
     var rules$1 = {
     	users: {
     		".create": false,
