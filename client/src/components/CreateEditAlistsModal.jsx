@@ -1,9 +1,6 @@
-
-// import Button from 'react-bootstrap/Button';
-// import Form from 'react-bootstrap/Form';
-// import Modal from 'react-bootstrap/Modal';
-
 import { Button, Form, Modal, Row, Col } from 'react-bootstrap';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 // eslint-disable-next-line react/prop-types
 function CreateEditAlistsModal({showModal,showm,editIndex,formData,setFormData,handleAddOrEdit, patients, doctors, mkbs}) {
@@ -15,10 +12,6 @@ function CreateEditAlistsModal({showModal,showm,editIndex,formData,setFormData,h
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
-
-    console.log('change pat name on combo');
-    console.log(id);
-    console.log(value);
 
     setFormData({ ...formData, [id]: value });
   };
@@ -36,11 +29,10 @@ function CreateEditAlistsModal({showModal,showm,editIndex,formData,setFormData,h
               <Col md={6}>
                 <Form.Group className="mb-3" controlId="date">
                   <Form.Label>Дата</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder=""
-                    value={formData.date}
-                    onChange={handleInputChange}
+                  <DatePicker
+                    selected={formData.date ? new Date(formData.date) : null} // Convert date string to Date object
+                    onChange={(date) => setFormData({ ...formData, date })} 
+                    dateFormat="dd/MM/yyyy" 
                   />
                 </Form.Group>
               </Col>

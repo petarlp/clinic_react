@@ -5,7 +5,7 @@ const baseUrl = 'http://localhost:3030/data/shedules'
 export const getAll = async () => {
 
     const query = new URLSearchParams({
-        load: `patient=_patientId:patients,doctor=_doctorId:doctors`,
+        load: `_patientId=_patientId:patients,_doctorId=_doctorId:doctors`,
     });
 
     const result = await request.get(`${baseUrl}?${query}`);
