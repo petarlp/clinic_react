@@ -1517,21 +1517,23 @@
           recipes: {
             "1": {
               "_id": "1",
+              "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
               "date": "2023-11-13T10:00:00",
               "_patientId": "1",
               "_doctorId": "3",
               "exec" : "Многократно",
-              "med_name": "FENISTIL GEL, Gel, 0,1 % - 30 g, null PACK: 1",
+              "_medicamentId": "10025",
               "med_text": "2x1 на ден"
             },
           
             "2": {
               "_id": "2",
+              "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
               "date": "2023-11-12T10:00:00",
               "_patientId": "2",
               "_doctorId": "2",
               "exec" : "Еднократно",
-              "med_name": "FLUIMUCIL, Granules for oral solution, 100 mg, null PACK: 20",
+              "_medicamentId": "10004",
               "med_text": "3х1 на ден"
             }
           
