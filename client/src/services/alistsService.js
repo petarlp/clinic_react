@@ -1,15 +1,42 @@
-const baseUrl = 'http://localhost:3030/data'
+import * as request from "../lib/request";
+
+const baseUrl = 'http://localhost:3030/data/alists'
 
 export const getAll = async () => {
 
     const query = new URLSearchParams({
-        load: `patient=_patientId:patients,doctor=_doctorId:doctors,mkb=_mkbId:mkbs`,
+        load: `_patientId=_patientId:patients,_doctorId=_doctorId:doctors,_mkbId=_mkbId:mkbs`,
     });
 
-    const response = await fetch(`${baseUrl}/alists?${query}`);
-    const result = await response.json();
+    const result = await request.get(`${baseUrl}?${query}`);
+
     const data = Object.values(result);
 
     return data;
-}
+};
+
+export const del = async (id) => {
+    const result = await request.remove(`${baseUrl}/${id}`);
+
+    const data = Object.values(result);
+
+    return data;
+};
+
+export const update = async (id,formData) => {
+    const result = await request.put(`${baseUrl}/${id}`,formData);
+
+    const data = Object.values(result);
+
+    return data;
+};
+
+export const create = async (formData) => {
+    const result = await request.post(baseUrl,formData);
+
+    const data = Object.values(result);
+
+    return data;
+};
+
 

@@ -7,6 +7,8 @@ import Swal from 'sweetalert2'
 
 export default function Patients() {
 
+    const user_id = localStorage.getItem('user_id');
+
     const[patients,setPatients] = useState([]);
 
     const[showModal, setShowModal] = useState(false);
@@ -15,6 +17,7 @@ export default function Patients() {
 
     const [formData, setFormData] = useState({
         _id: '',
+        _ownerId: user_id,
         name: '',
         egn: '',
         phoneNumber: '',
@@ -26,7 +29,7 @@ export default function Patients() {
         .then(result => {setPatients(result)})
         .catch(err => {
             console.log(err);
-            Swal.fire({icon: "error",title: "Oops...",text: err,});
+            Swal.fire({icon: "error",title: "Грешка",text: err.message,});
         })
     } , [])
 
@@ -34,7 +37,7 @@ export default function Patients() {
     const showm = (val) => {setShowModal(val);};
 
     const addPat = () => {
-        setFormData({ _id: '', name: '' , egn: '', phoneNumber: '', address: ''});
+        setFormData({ _id: '', _ownerId: user_id, name: '' , egn: '', phoneNumber: '', address: ''});
         setEditIndex(null);
         setEditId(null);
         setShowModal(true);
@@ -65,25 +68,30 @@ export default function Patients() {
                 })
                 .catch(err => {
                     console.log(err);
-                    Swal.fire({icon: "error",title: "Oops...",text: err,});
+                    Swal.fire({icon: "error",title: "Грешка",text: err.message,});
                 })
           
         } else {// Add new record
             patientsService.create(formData)
                 .then(result => {
-                    setPatients([...patients, formData]);
+                    patientsService.getAll()
+                    .then(result => {setPatients(result)})
+                    .catch(err => {
+                        console.log(err);
+                        Swal.fire({icon: "error",title: "Грешка",text: err.message,});
+                    })
                 })
                 .catch(err => {
                     console.log(err);
-                    Swal.fire({icon: "error",title: "Oops...",text: err,});
+                    Swal.fire({icon: "error",title: "Грешка",text: err.message,});
                 })
           
         }
-        setFormData({ _id: '', name: '' , egn: '', phoneNumber: '', address: ''});
+        setFormData({ _id: '', _ownerId: user_id , name: '' , egn: '', phoneNumber: '', address: ''});
         setEditIndex(null);
         setEditId(null);
         setShowModal(false);
-      };
+    };
 
 
     const handleDelete = (id,ind) => {
@@ -106,7 +114,7 @@ export default function Patients() {
                         setPatients(newData);
                         Swal.fire({title: "Изтриване!",text: "Избрания запис беше изтрит.",icon: "success"});
                     })
-                    .catch(err => { Swal.fire({icon: "error",title: "Oops...",text: err,}); })
+                    .catch(err => { Swal.fire({icon: "error",title: "Грешка",text: err.message,}); })
             }
           });
     };
