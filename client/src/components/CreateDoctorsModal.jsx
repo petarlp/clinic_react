@@ -2,6 +2,7 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import Swal from 'sweetalert2'
 
 // eslint-disable-next-line react/prop-types
 function CreateDoctorsModal({showModal,showm,editIndex,formData,setFormData,handleAddOrEdit}) {
@@ -14,6 +15,21 @@ function CreateDoctorsModal({showModal,showm,editIndex,formData,setFormData,hand
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: value });
+  };
+
+  const handleEdit = () => {
+    
+    if(
+        !formData.name || formData.name.trim() === '' || 
+        !formData.uin || formData.uin.trim() === '' || 
+        !formData.codSpec || formData.codSpec.trim() === '' || 
+        !formData.address || formData.address.trim() === '' 
+      ) 
+    {
+      Swal.fire({icon: "error",title: "Грешка",text: "Моля попълнете всички полета",});
+      return;
+    }
+    handleAddOrEdit();
   };
 
   return (
@@ -70,7 +86,7 @@ function CreateDoctorsModal({showModal,showm,editIndex,formData,setFormData,hand
           <Button variant="secondary" onClick={() => showm(false)}>
             Отказ
           </Button>
-          <Button variant="primary" onClick={() => handleAddOrEdit()} >
+          <Button variant="primary" onClick={() => handleEdit()} >
               {editIndex !== null ? 'Редактирай' : 'Добави'}
           </Button>
         </Modal.Footer>

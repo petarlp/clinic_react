@@ -1,6 +1,8 @@
 import { Button, Form, Modal, Row, Col } from 'react-bootstrap';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Swal from 'sweetalert2';
+
 
 // eslint-disable-next-line react/prop-types
 function CreateEditRecipeModal({showModal,showm,editIndex,formData,setFormData,handleAddOrEdit, patients, doctors, medicaments}) {
@@ -14,6 +16,23 @@ function CreateEditRecipeModal({showModal,showm,editIndex,formData,setFormData,h
     const { id, value } = e.target;
 
     setFormData({ ...formData, [id]: value });
+  };
+
+  const handleEdit = () => {
+    
+    if(
+        !formData.date || 
+        !formData._patientId || formData._patientId.trim() === '' || 
+        !formData._doctorId || formData._doctorId.trim() === '' || 
+        !formData.exec || formData.exec.trim() === '' || 
+        !formData._medicamentId || formData._medicamentId.trim() === '' || 
+        !formData.med_text || formData.med_text.trim() === ''  
+      ) 
+    {
+      Swal.fire({icon: "error",title: "Грешка",text: "Моля попълнете всички полета",});
+      return;
+    }
+    handleAddOrEdit();
   };
 
   return (
@@ -105,7 +124,7 @@ function CreateEditRecipeModal({showModal,showm,editIndex,formData,setFormData,h
           <Button variant="secondary" onClick={() => showm(false)}>
             Отказ
           </Button>
-          <Button variant="primary" onClick={() => handleAddOrEdit()} >
+          <Button variant="primary" onClick={() => handleEdit()} >
               {editIndex !== null ? 'Редактирай' : 'Добави'}
           </Button>
         </Modal.Footer>

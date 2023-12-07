@@ -2,7 +2,7 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
-
+import Swal from 'sweetalert2'
 
 
 // eslint-disable-next-line react/prop-types
@@ -15,6 +15,15 @@ function CreateEditMedicamentsModal({showModal,showm,editIndex,formData,setFormD
   const handleInputChange = (e) => {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: value });
+  };
+
+  const handleEdit = () => {
+    
+    if (!formData.name || formData.name.trim() === '') {
+      Swal.fire({icon: "error",title: "Грешка",text: "Моля попълнете всички полета",});
+      return;
+    }
+    handleAddOrEdit();
   };
 
   return (
@@ -40,7 +49,7 @@ function CreateEditMedicamentsModal({showModal,showm,editIndex,formData,setFormD
           <Button variant="secondary" onClick={() => showm(false)}>
             Отказ 
           </Button>
-          <Button variant="primary" onClick={() => handleAddOrEdit()} >
+          <Button variant="primary" onClick={() => handleEdit()} >
               {editIndex !== null ? 'Редактирай' : 'Добави'}
           </Button>
         </Modal.Footer>

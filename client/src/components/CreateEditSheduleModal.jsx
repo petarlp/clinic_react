@@ -1,6 +1,7 @@
 import { Button, Form, Modal, Row, Col } from 'react-bootstrap';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import Swal from 'sweetalert2';
 
 // eslint-disable-next-line react/prop-types
 function CreateEditSheduleModal({showModal,showm,editIndex,formData,setFormData,handleAddOrEdit, patients, doctors}) {
@@ -16,6 +17,21 @@ function CreateEditSheduleModal({showModal,showm,editIndex,formData,setFormData,
     setFormData({ ...formData, [id]: value });
   };
 
+  const handleEdit = () => {
+    
+    if(
+        !formData.date || 
+        !formData._patientId || formData._patientId.trim() === '' || 
+        !formData._doctorId || formData._doctorId.trim() === '' || 
+        !formData.notes || formData.notes.trim() === '' 
+      ) 
+    {
+      Swal.fire({icon: "error",title: "Грешка",text: "Моля попълнете всички полета",});
+      return;
+    }
+    handleAddOrEdit();
+  };
+
   return (
     <>
       
@@ -25,10 +41,10 @@ function CreateEditSheduleModal({showModal,showm,editIndex,formData,setFormData,
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Row>
-              <Col md={6}>
+           
+             
                 <Form.Group className="mb-3" controlId="date">
-                  <Form.Label>Дата</Form.Label>
+                  <Form.Label>Дата </Form.Label><br/>
                   <DatePicker
                     selected={formData.date ? new Date(formData.date) : null} // Convert date string to Date object
                     onChange={(date) => setFormData({ ...formData, date })} 
@@ -39,8 +55,8 @@ function CreateEditSheduleModal({showModal,showm,editIndex,formData,setFormData,
                     placeholderText="Избери дата и час"
                   />
                 </Form.Group>
-              </Col>
-              <Col md={6}>
+              
+             
                 <Form.Group className="mb-3" controlId="_patientId">
                 <Form.Label>Пациент</Form.Label>
                   <Form.Control as="select" value={formData._patientId} onChange={handleInputChange}>
@@ -52,10 +68,10 @@ function CreateEditSheduleModal({showModal,showm,editIndex,formData,setFormData,
                     ))}
                   </Form.Control>
                 </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              <Col md={6}>
+              
+            
+            
+              
                 <Form.Group className="mb-3" controlId="_doctorId">
                   <Form.Label>Доктор</Form.Label>
                     <Form.Control as="select" value={formData._doctorId} onChange={handleInputChange}>
@@ -67,8 +83,8 @@ function CreateEditSheduleModal({showModal,showm,editIndex,formData,setFormData,
                     ))}
                   </Form.Control>
                 </Form.Group>
-              </Col>
-              <Col md={6}>
+              
+              
                 <Form.Group className="mb-3" controlId="notes">
                 <Form.Label>Забележки</Form.Label>
                   <div>
@@ -92,15 +108,14 @@ function CreateEditSheduleModal({showModal,showm,editIndex,formData,setFormData,
                     />
                   </div>
               </Form.Group>
-              </Col>
-            </Row>
+              
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => showm(false)}>
             Отказ
           </Button>
-          <Button variant="primary" onClick={() => handleAddOrEdit()} >
+          <Button variant="primary" onClick={() => handleEdit()} >
               {editIndex !== null ? 'Редактирай' : 'Добави'}
           </Button>
         </Modal.Footer>
