@@ -41,11 +41,11 @@ function App() {
             <SideBar />
             <Routes>
               <Route path="/login" element={<Login />} />
-              <Route path="/home" element={<Home />} />
+              <Route path="/" element={<Home />} />
               <Route path="/forus" element={<ForUs />} />
               
               <Route element={<AuthGuard />}>
-                <Route path="/" element={<DashBoard />} />
+                <Route path="/dashboard" element={<DashBoard />} />
                 <Route path="/patients" element={<Patients />} />
                 <Route path="/doctors" element={<Doctors />} />
                 <Route path="/alists" element={<AmbList />} />

@@ -31,7 +31,7 @@ export default function SideBar() {
             <ul className="sidebar-nav" id="sidebar-nav">
 
               <li className="nav-item">
-                <NavLink to="/" className="nav-link collapsed" onClick={handleCloseCollapse }>
+                <NavLink to="/dashboard" className="nav-link collapsed" onClick={handleCloseCollapse }>
                     <i className="bi bi-grid"></i>
                     <span>Начало</span>
                 </NavLink>

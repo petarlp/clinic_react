@@ -28,7 +28,7 @@ export default function HeaderWeb(props) {
               <ul className="d-flex">
 
                 <li className="nav-item pe-3">
-                  <Link to="/home" className="dropdown-item d-flex align-items-center">
+                  <Link to="/" className="dropdown-item d-flex align-items-center">
                    
                     <span>Начало</span>
                   </Link>

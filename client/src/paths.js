@@ -1,5 +1,5 @@
 const Path = {
-    Home: '/',
+    Home: '/dashboard',
     Logout: '/logout',
 };
 

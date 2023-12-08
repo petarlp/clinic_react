@@ -20,9 +20,6 @@ export function AuthProvider({
 
         setAuth(result);
 
-        console.log('set login information');
-        console.log(result);
-
         localStorage.setItem('accessToken', result.accessToken);
         localStorage.setItem('username', result.username);
         localStorage.setItem('user_img', result.img);
