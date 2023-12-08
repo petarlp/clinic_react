@@ -15,6 +15,15 @@ export const getAll = async () => {
     return data;
 };
 
+export const getCount = async () => {
+
+    const result = await request.get(`${baseUrl}?count`);
+
+    const data = result;
+
+    return data;
+};
+
 export const del = async (id) => {
     const result = await request.remove(`${baseUrl}/${id}`);
 

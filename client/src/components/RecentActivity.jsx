@@ -1,4 +1,22 @@
+import { useEffect , useState } from "react";
+import * as shedulesService from "../services/shedulesService";
+import { dateFormatBgHour } from "../services/dateFormatBgHour";
+import Swal from 'sweetalert2'
+
 export default function RecentActivity(){
+
+    const[shedules,setShedules] = useState([]);
+
+
+      useEffect(() => {
+        shedulesService.getAll()
+        .then(result => {setShedules(result)})
+        .catch(err => {
+            console.log(err);
+            Swal.fire({icon: "error",title: "Грешка",text: err.message,});
+        })
+      } , []);
+
     return(
             <div className="card">
                 
@@ -8,77 +26,15 @@ export default function RecentActivity(){
 
                     <div className="activity">
 
-                        <div className="activity-item d-flex">
-                            <div className="activite-label">32 мин</div>
+                    {shedules.map( (slist, index) => (
+                        <div key={slist._id} className="activity-item d-flex">
+                            <div className="activite-label">{dateFormatBgHour(slist.date)}</div>
                             <i className='bi bi-circle-fill activity-badge text-success align-self-start'></i>
                             <div className="activity-content">
-                                Преглед д-р Цветков <a href="#" className="fw-bold text-dark">по здравна каса</a> 
+                                Преглед {slist._doctorId.name} - {slist.notes}
                             </div>
                         </div>
-
-                        <div className="activity-item d-flex">
-                            <div className="activite-label">56 мин</div>
-                            <i className='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                            <div className="activity-content">
-                                Преглед д-р Цветков <a href="#" className="fw-bold text-dark">частен преглед</a>
-                            </div>
-                        </div>
-
-                        <div className="activity-item d-flex">
-                            <div className="activite-label">2 часа</div>
-                            <i className='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                            <div className="activity-content">
-                                Преглед д-р Колев <a href="#" className="fw-bold text-dark">по здравна каса</a> 
-                            </div>
-                        </div>
-
-                        <div className="activity-item d-flex">
-                            <div className="activite-label">1 ден</div>
-                            <i className='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                            <div className="activity-content">
-                                Преглед д-р Пенева <a href="#" className="fw-bold text-dark">частен преглед</a>
-                            </div>
-                        </div>
-
-                        <div className="activity-item d-flex">
-                            <div className="activite-label">2 дни</div>
-                            <i className='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                            <div className="activity-content">
-                                Преглед д-р Цветков <a href="#" className="fw-bold text-dark">по здравна каса</a> 
-                            </div>
-                        </div>
-
-                        <div className="activity-item d-flex">
-                            <div className="activite-label">28 дни</div>
-                            <i className='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                            <div className="activity-content">
-                                Преглед д-р Маринов <a href="#" className="fw-bold text-dark">по здравна каса</a> 
-                            </div>
-                        </div>
-
-                        <div className="activity-item d-flex">
-                            <div className="activite-label">32 дни</div>
-                            <i className='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                            <div className="activity-content">
-                                Преглед д-р Пенева <a href="#" className="fw-bold text-dark">частен преглед</a>
-                            </div>
-                        </div>
-
-                        <div className="activity-item d-flex">
-                            <div className="activite-label">40 дни</div>
-                            <i className='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                            <div className="activity-content">
-                                Преглед д-р Цветков <a href="#" className="fw-bold text-dark">по здравна каса</a> 
-                            </div>
-                        </div>
-
-                        <div className="activity-item d-flex">
-                            <div className="activite-label">42 дни</div>
-                            <i className='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                            <div className="activity-content">
-                                Преглед д-р Маринов <a href="#" className="fw-bold text-dark">по здравна каса</a> 
-                            </div>
-                        </div>
+                    ))}
 
                     </div>
 

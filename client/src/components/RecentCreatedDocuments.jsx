@@ -1,70 +1,49 @@
+import { useEffect , useState } from "react";
+import * as alistsService from "../services/alistsService";
+import Swal from 'sweetalert2'
+import { dateFormatBg } from "../services/dateFormatBg";
+
 export default function RecentSales() {
+
+  const[alists,setAlists] = useState([]);
+
+
+      useEffect(() => {
+        alistsService.getAll()
+        .then(result => {setAlists(result)})
+        .catch(err => {
+            console.log(err);
+            Swal.fire({icon: "error",title: "Грешка",text: err.message,});
+        })
+      } , []);
+
     return(
+
         <div className="col-12">
                       <div className="overflow-auto card recent-sales">
 
                         
                         <div className="card-body">
-                          <h5 className="card-title">Последно издадени документи </h5>
+                          <h5 className="card-title">Последно издадени амбулаторни листи </h5>
 
                           <table className="table table-borderless datatable">
                             <thead>
                               <tr>
                                 <th scope="col">#</th>
+                                <th scope="col">Дата</th>
                                 <th scope="col">Пациент</th>
-                                <th scope="col">Документ</th>
-                                <th scope="col">Статус</th>
+                                <th scope="col">Лекар</th>
                               </tr>
                             </thead>
                             <tbody>
-                              <tr>
-                                <th scope="row"><a href="#">#2457</a></th>
-                                <td>Иван Иванов</td>
-                                <td><a href="#" className="text-primary">Амбулаторен лист</a></td>
-                                <td><span className="badge bg-success">Предаден </span></td>
-                              </tr>
-                              <tr>
-                                <th scope="row"><a href="#">#2147</a></th>
-                                <td>Стефан Колев</td>
-                                <td><a href="#" className="text-primary">Амбулаторен лист</a></td>
-                                <td><span className="badge bg-warning">Изчакващ</span></td>
-                              </tr>
-                              <tr>
-                                <th scope="row"><a href="#">#2049</a></th>
-                                <td>Ангелина Дачева</td>
-                                <td><a href="#" className="text-primary">Амбулаторен лист</a></td>
-                                <td><span className="badge bg-success">Предаден </span></td>
-                              </tr>
-                              <tr>
-                                <th scope="row"><a href="#">#2644</a></th>
-                                <td>Калин Манев</td>
-                                <td><a href="#" className="text-primar">Амбулаторен лист</a></td>
-                                <td><span className="badge bg-warning">Изчакващ</span></td> 
-                              </tr>
-                              <tr>
-                                <th scope="row"><a href="#">#2643</a></th>
-                                <td>Поля Васева</td>
-                                <td><a href="#" className="text-primary">Рецепта</a></td>
-                                <td><span className="badge bg-success">Предаден </span></td>
-                              </tr>
-                              <tr>
-                                <th scope="row"><a href="#">#2664</a></th>
-                                <td>Милен Жечев</td>
-                                <td><a href="#" className="text-primary">Амбулаторен лист</a></td>
-                                <td><span className="badge bg-success">Предаден </span></td>
-                              </tr>
-                              <tr>
-                                <th scope="row"><a href="#">#2678</a></th>
-                                <td>Николай Христов</td>
-                                <td><a href="#" className="text-primary">Рецепта</a></td>
-                                <td><span className="badge bg-success">Предаден </span></td>
-                              </tr>
-                              <tr>
-                                <th scope="row"><a href="#">#2543</a></th>
-                                <td>Лора Русева</td>
-                                <td><a href="#" className="text-primary">Амбулаторен лист</a></td>
-                                <td><span className="badge bg-success">Предаден </span></td>
-                              </tr>
+                            {alists.map( (al, index) => (
+                                        <tr key={al._id}>
+                                            <td>{index + 1}</td>
+                                            <td>{dateFormatBg(al.date)}</td>
+                                            <td>{al._patientId.name}</td>
+                                            <td>{al._doctorId.name}</td>
+                                        </tr>
+                                    ))}
                             </tbody>
                           </table>
 

@@ -1,20 +1,24 @@
+import { useEffect , useState } from "react";
+import * as shedulesService from "../services/shedulesService";
+import Swal from 'sweetalert2'
+
 export default function Еxaminations() {
+
+      const[shedules,setShedules] = useState([]);
+
+
+      useEffect(() => {
+        shedulesService.getCount()
+        .then(result => {setShedules(result)})
+        .catch(err => {
+            console.log(err);
+            Swal.fire({icon: "error",title: "Грешка",text: err.message,});
+        })
+      } , []);
+
     return(
         <div className="col-xxl-4 col-md-6">
         <div className="card info-card sales-card">
-
-          {/* <div className="filter">
-            <a className="icon" href="#" data-bs-toggle="dropdown"><i className="bi bi-three-dots"></i></a>
-            <ul className="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-              <li className="dropdown-header text-start">
-                <h6>Филтър</h6>
-              </li>
-
-              <li><a className="dropdown-item" href="#">Днес</a></li>
-              <li><a className="dropdown-item" href="#">Този месец</a></li>
-              <li><a className="dropdown-item" href="#">Тази година</a></li>
-            </ul>
-          </div> */}
 
           <div className="card-body">
             <h5 className="card-title">Записани прегледи <span></span></h5>
@@ -25,8 +29,7 @@ export default function Еxaminations() {
                 <i className="ri-stethoscope-fill"></i>
               </div>
               <div className="ps-3">
-                <h6>25</h6>
-                {/* <span className="pt-1 text-success small fw-bold">12%</span> <span className="pt-2 text-muted small ps-1">повече от вчера</span> */}
+                <h6>{shedules}</h6>{/* <span className="pt-1 text-success small fw-bold">12%</span> <span className="pt-2 text-muted small ps-1">повече от вчера</span> */}
 
               </div>
             </div>
