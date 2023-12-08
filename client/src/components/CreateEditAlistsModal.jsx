@@ -61,7 +61,7 @@ function CreateEditAlistsModal({showModal,showm,editIndex,formData,setFormData,h
                 <Form.Group className="mb-3" controlId="_patientId">
                   <Form.Label>Пациент</Form.Label>
                     <Form.Control as="select" value={formData._patientId} onChange={handleInputChange}>
-                      <option value="">Избери пациент {formData._patientId}</option>
+                      <option value="">Избери пациент</option>
                       {patients.map((patient, index) => (
                         <option key={patient._id} value={patient._id}>
                           {patient.name}

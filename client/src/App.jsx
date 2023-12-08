@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import Header from "./components/Header"
+import HeaderWeb from "./components/HeaderWeb"
 import SideBar from "./components/SideBar"
 import DashBoard from "./pages/DashBoard";
 
@@ -14,6 +15,8 @@ import Mkb from "./pages/Mkb";
 import Medicaments from "./pages/Medicaments";
 import Shedule from "./pages/Shedule";
 import Login from "./pages/Login";
+import Home from "./pages/Home";
+import ForUs from "./pages/ForUs";
 import Logout from "./components/Logout";
 
 import { AuthProvider } from './contexts/authContext';
@@ -34,9 +37,12 @@ function App() {
           
           <div className={showMenu?'':'toggle-sidebar'}>
             <Header hsmenu={handleShowMenu} />
+            <HeaderWeb />
             <SideBar />
             <Routes>
               <Route path="/login" element={<Login />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/forus" element={<ForUs />} />
               
               <Route element={<AuthGuard />}>
                 <Route path="/" element={<DashBoard />} />
