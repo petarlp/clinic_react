@@ -21,6 +21,7 @@ import Logout from "./components/Logout";
 
 import { AuthProvider } from './contexts/authContext';
 import AuthGuard from "./guards/AuthGuard";
+import PdfGenerator from "./components/PdfGenerate";
 
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
                 <Route path="/medicaments" element={<Medicaments />} />
                 <Route path="/shedule" element={<Shedule />} />
                 <Route path="/logout" element={<Logout />} />
+                <Route path="/pdf" element={<PdfGenerator />} />
                 <Route path="*" element={<DashBoard />} />
               </Route>
             </Routes>

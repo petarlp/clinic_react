@@ -10,6 +10,8 @@ import CreateEditRecipeModal from "../components/CreateEditRecipeModal";
 import Button from 'react-bootstrap/Button';
 import Swal from 'sweetalert2'
 
+import PrintRecipeModal from "../components/PrintRecipeModal";
+
 
 export default function Recipe() {
 
@@ -34,6 +36,26 @@ export default function Recipe() {
         exec: '',
         med_text: '',                        
     });
+
+    const[dataPrint,setDataPrint] = useState({
+        _id: '',
+        _ownerId: user_id,
+        date: '',
+        _patientId: '',
+        _doctorId: '',
+        _medicamentId: '',
+        exec: '',
+        med_text: '',
+    });
+
+    const[showModalRecipe,setShowModalRecipe] = useState(false);
+
+    const showPrint = (recip) => {
+        setDataPrint(recip);
+        setShowModalRecipe(true);
+    };
+
+
 
     useEffect(() => {
         recipesService.getAll()
@@ -67,6 +89,8 @@ export default function Recipe() {
     } , []);
 
     const showm = (val) => {setShowModal(val);};
+
+    const showmPr = (val) => {setShowModalRecipe(val);};
 
     const addRecipes = () => {
         setFormData({ _id: '', _ownerId: user_id, date: '', _patientId: '', _doctorId: '', _medicamentId: '', exec: '', med_text: ''});
@@ -203,6 +227,7 @@ export default function Recipe() {
                                             <td>
                                                 <i className="bi bi-pencil-square edit_but" onClick={ () => {editRecord(recip._id,index)}} ></i>
                                                 <i className="bi bi-x-square del_but" onClick={() => {handleDelete(recip._id,index)}}></i>
+                                                <i className="bi bi-printer del_but" onClick={() => {showPrint(recip)}}></i>
                                             </td>
                                         </tr>
                                     ))}
@@ -218,6 +243,8 @@ export default function Recipe() {
             <Button variant="primary" onClick={ () => addRecipes() }>
                 Въведи рецепта   
             </Button>
+
+            <PrintRecipeModal showModalRecipe={showModalRecipe} showmPr={showmPr} dataPrint={dataPrint} />
 
         </main>
     )
