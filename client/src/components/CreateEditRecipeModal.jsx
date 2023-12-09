@@ -101,12 +101,11 @@ function CreateEditRecipeModal({showModal,showm,editIndex,formData,setFormData,h
             
             <Form.Group className="mb-3" controlId="exec">
               <Form.Label>Отпускане</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder=""
-                value={formData.exec}
-                onChange={handleInputChange}
-              />
+              <Form.Control as="select" value={formData.exec} onChange={handleInputChange}>
+                <option value="">Изберете вид отпускане</option>
+                <option key="k1" value="Еднократно">Еднократно</option>
+                <option key="k2" value="Многократно">Многократно</option>
+              </Form.Control>
             </Form.Group>
             <Form.Group className="mb-3" controlId="med_text">
               <Form.Label>Прием</Form.Label>
